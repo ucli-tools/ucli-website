@@ -8,15 +8,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-900;
+  @apply bg-yellow-200;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-700 rounded-full;
+  @apply bg-gray-800 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
+  @apply bg-gray-700;
 }
 
 /* Code blocks */
@@ -25,15 +25,15 @@ pre {
 }
 
 code {
-  @apply bg-gray-900 px-2 py-1 rounded text-sm font-mono;
+  @apply bg-gray-800 px-2 py-1 rounded text-sm font-mono text-white;
 }
 
 pre code {
-  @apply bg-transparent px-0 py-0;
+  @apply bg-transparent px-0 py-0 text-gray-100;
 }
 
 /* Focus styles */
 button:focus,
 a:focus {
-  @apply outline-none ring-2 ring-indigo-500 ring-opacity-50;
+  @apply outline-none ring-2 ring-white ring-opacity-50;
 }
