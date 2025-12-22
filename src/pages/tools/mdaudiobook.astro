@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="mdaudiobook - Markdown to Audiobook Converter | UCLI Tools">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden">
+    <!-- Background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-400"></div>
+    <!-- CSS Grid Pattern -->
+    <div class="absolute inset-0 opacity-30" style="background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 50px 50px; mask-image: linear-gradient(180deg, white, rgba(255,255,255,0));"></div>
+
+    <Navbar />
+
+    <!-- Hero Content -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 text-center">
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6">
+        <span class="text-white">
+          mdaudiobook
+        </span>
+        <br />
+        <span class="text-white">
+          Markdown to Audiobook
+        </span>
+      </h1>
+
+      <p class="text-xl md:text-2xl text-white/90 mb-4 max-w-3xl mx-auto">
+        Transform your Markdown content into engaging audiobooks and podcasts
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="https://docs.ucli.tools/tools/mdaudiobook" class="px-8 py-4 bg-white hover:bg-gray-100 rounded-lg font-semibold text-lg transition text-gray-900">
+          View Documentation
+        </a>
+        <a href="https://docs.ucli.tools/getting-started" class="px-8 py-4 bg-pink-600 hover:bg-pink-700 rounded-lg font-semibold text-lg transition text-white">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4 text-white">Why mdaudiobook?</h2>
+      <p class="text-xl text-white/80">Turn your written content into captivating audio experiences</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Natural Speech</h3>
+        <p class="text-white/80">High-quality text-to-speech with natural-sounding voices and proper intonation</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Podcast Ready</h3>
+        <p class="text-white/80">Generate podcast episodes from your Markdown content with proper formatting</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Multiple Formats</h3>
+        <p class="text-white/80">Output in various audio formats including MP3, WAV, and more</p>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>

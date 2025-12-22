@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="mdtexpdf - Markdown to PDF Converter | UCLI Tools">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden">
+    <!-- Background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-red-400 via-pink-400 to-purple-400"></div>
+    <!-- CSS Grid Pattern -->
+    <div class="absolute inset-0 opacity-30" style="background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 50px 50px; mask-image: linear-gradient(180deg, white, rgba(255,255,255,0));"></div>
+
+    <Navbar />
+
+    <!-- Hero Content -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 text-center">
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6">
+        <span class="text-white">
+          mdtexpdf
+        </span>
+        <br />
+        <span class="text-white">
+          Markdown to PDF
+        </span>
+      </h1>
+
+      <p class="text-xl md:text-2xl text-white/90 mb-4 max-w-3xl mx-auto">
+        Convert Markdown documents to professional PDF with LaTeX quality typesetting
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="https://docs.ucli.tools/tools/mdtexpdf" class="px-8 py-4 bg-white hover:bg-gray-100 rounded-lg font-semibold text-lg transition text-gray-900">
+          View Documentation
+        </a>
+        <a href="https://docs.ucli.tools/getting-started" class="px-8 py-4 bg-red-600 hover:bg-red-700 rounded-lg font-semibold text-lg transition text-white">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4 text-white">Why mdtexpdf?</h2>
+      <p class="text-xl text-white/80">Professional PDF generation from your Markdown files</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">LaTeX Quality</h3>
+        <p class="text-white/80">Professional typesetting with mathematical formulas, tables, and advanced formatting</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h4a1 1 0 011 1v2m4 0H8l.5 16h7L16 4z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Batch Conversion</h3>
+        <p class="text-white/80">Convert multiple Markdown files to PDF in a single command</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Beautiful Output</h3>
+        <p class="text-white/80">Stunning PDFs with syntax highlighting, proper formatting, and professional appearance</p>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
