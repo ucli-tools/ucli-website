@@ -1,5 +1,5 @@
 ---
-// Reusable navigation bar component
+// Reusable navigation bar component with mobile support
 ---
 
 <nav class="relative bg-white/10 backdrop-blur-sm border-b border-white/20">
@@ -11,6 +11,19 @@
         </svg>
         <span class="text-xl font-bold text-white">UCLI Tools</span>
       </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition"
+        aria-label="Toggle mobile menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Desktop navigation -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/" class="text-white hover:text-orange-200 transition font-medium">Home</a>
         <a href="https://docs.ucli.tools" class="text-white hover:text-orange-200 transition font-medium">Documentation</a>
@@ -19,5 +32,49 @@
         <a href="https://docs.ucli.tools/getting-started" class="px-4 py-2 bg-orange-600 hover:bg-orange-700 rounded-lg transition font-medium text-white">Get Started</a>
       </div>
     </div>
+
+    <!-- Mobile navigation menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-6 border-t border-white/10 mt-4 pt-4">
+      <div class="flex flex-col space-y-4">
+        <a href="/" class="text-white hover:text-orange-200 transition font-medium py-2">Home</a>
+        <a href="https://docs.ucli.tools" class="text-white hover:text-orange-200 transition font-medium py-2">Documentation</a>
+        <a href="/tools" class="text-white hover:text-orange-200 transition font-medium py-2">Tools</a>
+        <a href="https://github.com/ucli-tools" class="text-white hover:text-orange-200 transition font-medium py-2">GitHub</a>
+        <a href="https://docs.ucli.tools/getting-started" class="px-4 py-3 bg-orange-600 hover:bg-orange-700 rounded-lg transition font-medium text-white text-center">Get Started</a>
+      </div>
+    </div>
   </div>
 </nav>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+
+        // Update button icon
+        const icon = mobileMenuButton.querySelector('svg');
+        if (mobileMenu.classList.contains('hidden')) {
+          // Menu closed - show hamburger
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+        } else {
+          // Menu open - show X
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+        }
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.add('hidden');
+          const icon = mobileMenuButton.querySelector('svg');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+        }
+      });
+    }
+  });
+</script>
