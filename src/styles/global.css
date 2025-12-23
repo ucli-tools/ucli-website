@@ -37,3 +37,29 @@ button:focus,
 a:focus {
   @apply outline-none ring-2 ring-white ring-opacity-50;
 }
+
+/* Mobile layout fixes */
+@media (max-width: 768px) {
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure containers are full width on mobile */
+  .container,
+  .max-w-7xl,
+  .max-w-4xl,
+  .max-w-3xl {
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Fix hero content centering */
+  .hero-content {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
