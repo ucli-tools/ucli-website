@@ -49,8 +49,29 @@ import Footer from '../components/Footer.astro';
           </svg>
         </div>
         <h3 class="text-2xl font-bold mb-3 text-white">ucli</h3>
-        <p class="text-white/80 mb-6">Tool manager - Install and manage all CLI tools</p>
-        <div class="text-sm text-yellow-200 font-mono mb-4">ucli build [tool]</div>
+        <p class="text-white/80 mb-4">Tool manager - Install and manage all CLI tools</p>
+        <div class="bg-black/50 rounded-lg mb-4 border border-yellow-500/30 overflow-hidden">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 bg-black/30 border-b border-yellow-500/20">
+            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            <button
+              id="copy-ucli-btn"
+              class="ml-auto p-1 hover:bg-white/10 rounded transition flex items-center gap-1 text-white/50 hover:text-white text-xs"
+              title="Copy command"
+            >
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+            <script>
+              document.getElementById('copy-ucli-btn').addEventListener('click', function() {
+                navigator.clipboard.writeText('ucli build gits');
+              });
+            </script>
+          </div>
+          <pre class="text-sm text-yellow-200 font-mono p-3"><code>ucli build gits</code></pre>
+        </div>
         <a href="/tools/ucli" class="inline-block px-6 py-3 bg-yellow-600 hover:bg-yellow-700 rounded-lg font-semibold transition text-white">
           Learn More →
         </a>
@@ -64,8 +85,29 @@ import Footer from '../components/Footer.astro';
           </svg>
         </div>
         <h3 class="text-2xl font-bold mb-3 text-white">gits</h3>
-        <p class="text-white/80 mb-6">Git workflow automation supporting Forgejo, Gitea, and GitHub</p>
-        <div class="text-sm text-orange-200 font-mono mb-4">gits pull && gits push</div>
+        <p class="text-white/80 mb-4">Git workflow automation supporting Forgejo, Gitea, and GitHub</p>
+        <div class="bg-black/50 rounded-lg mb-4 border border-orange-500/30 overflow-hidden">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 bg-black/30 border-b border-orange-500/20">
+            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            <button
+              id="copy-gits-btn"
+              class="ml-auto p-1 hover:bg-white/10 rounded transition flex items-center gap-1 text-white/50 hover:text-white text-xs"
+              title="Copy command"
+            >
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+            <script>
+              document.getElementById('copy-gits-btn').addEventListener('click', function() {
+                navigator.clipboard.writeText('gits push-all -py');
+              });
+            </script>
+          </div>
+          <pre class="text-sm text-orange-200 font-mono p-3"><code>gits push-all -py</code></pre>
+        </div>
         <a href="/tools/gits" class="inline-block px-6 py-3 bg-orange-600 hover:bg-orange-700 rounded-lg font-semibold transition text-white">
           Learn More →
         </a>
@@ -79,8 +121,29 @@ import Footer from '../components/Footer.astro';
           </svg>
         </div>
         <h3 class="text-2xl font-bold mb-3 text-white">mdtexpdf</h3>
-        <p class="text-white/80 mb-6">Convert Markdown documents to PDF with LaTeX quality</p>
-        <div class="text-sm text-red-200 font-mono mb-4">mdtexpdf convert doc.md</div>
+        <p class="text-white/80 mb-4">Convert Markdown documents to PDF with LaTeX quality</p>
+        <div class="bg-black/50 rounded-lg mb-4 border border-red-500/30 overflow-hidden">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 bg-black/30 border-b border-red-500/20">
+            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            <button
+              id="copy-mdtexpdf-btn"
+              class="ml-auto p-1 hover:bg-white/10 rounded transition flex items-center gap-1 text-white/50 hover:text-white text-xs"
+              title="Copy command"
+            >
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+            <script>
+              document.getElementById('copy-mdtexpdf-btn').addEventListener('click', function() {
+                navigator.clipboard.writeText('mdtexpdf convert doc.md');
+              });
+            </script>
+          </div>
+          <pre class="text-sm text-red-200 font-mono p-3"><code>mdtexpdf convert doc.md</code></pre>
+        </div>
         <a href="/tools/mdtexpdf" class="inline-block px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition text-white">
           Learn More →
         </a>
@@ -94,8 +157,29 @@ import Footer from '../components/Footer.astro';
           </svg>
         </div>
         <h3 class="text-2xl font-bold mb-3 text-white">mdaudiobook</h3>
-        <p class="text-white/80 mb-6">Convert Markdown content to audiobooks and podcasts</p>
-        <div class="text-sm text-pink-200 font-mono mb-4">mdaudiobook generate book.md</div>
+        <p class="text-white/80 mb-4">Convert Markdown content to audiobooks and podcasts</p>
+        <div class="bg-black/50 rounded-lg mb-4 border border-pink-500/30 overflow-hidden">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 bg-black/30 border-b border-pink-500/20">
+            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            <button
+              id="copy-mdaudiobook-btn"
+              class="ml-auto p-1 hover:bg-white/10 rounded transition flex items-center gap-1 text-white/50 hover:text-white text-xs"
+              title="Copy command"
+            >
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+            <script>
+              document.getElementById('copy-mdaudiobook-btn').addEventListener('click', function() {
+                navigator.clipboard.writeText('mdaudiobook generate book.md');
+              });
+            </script>
+          </div>
+          <pre class="text-sm text-pink-200 font-mono p-3"><code>mdaudiobook generate book.md</code></pre>
+        </div>
         <a href="/tools/mdaudiobook" class="inline-block px-6 py-3 bg-pink-600 hover:bg-pink-700 rounded-lg font-semibold transition text-white">
           Learn More →
         </a>
@@ -104,8 +188,29 @@ import Footer from '../components/Footer.astro';
 
     <div class="text-center mt-12">
       <p class="text-lg text-white/80 mb-6">All tools are installed with a single command using the ucli tool manager</p>
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 max-w-2xl mx-auto">
-        <pre class="text-white font-mono text-sm"><code><span class="text-white/70"># Install multiple tools at once</span>
+      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl max-w-2xl mx-auto overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-2.5 bg-black/30 border-b border-white/10">
+          <div class="w-3 h-3 rounded-full bg-red-400"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+          <div class="w-3 h-3 rounded-full bg-green-400"></div>
+          <span class="text-white/60 text-sm ml-2">Terminal</span>
+          <button
+            id="copy-install-all-btn"
+            class="ml-auto p-1.5 hover:bg-white/10 rounded transition flex items-center gap-1.5 text-white/60 hover:text-white text-xs"
+            title="Copy command"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            Copy
+          </button>
+          <script>
+            document.getElementById('copy-install-all-btn').addEventListener('click', function() {
+              navigator.clipboard.writeText('ucli build gits mdtexpdf mdaudiobook');
+            });
+          </script>
+        </div>
+        <pre class="text-white font-mono text-sm p-6"><code><span class="text-white/70"># Install multiple tools at once</span>
 <span class="text-yellow-200">ucli</span> <span class="text-orange-200">build</span> gits mdtexpdf mdaudiobook</code></pre>
       </div>
     </div>
