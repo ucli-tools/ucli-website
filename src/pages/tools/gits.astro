@@ -16,18 +16,30 @@ import Footer from '../../components/Footer.astro';
 
     <!-- Hero Content -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/30">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+        </svg>
+        Git in the AI Era
+      </div>
+
       <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight mb-4 md:mb-6">
         <span class="text-white">
           GitS
         </span>
         <br />
         <span class="text-white">
-          Git Workflow Automation
+          Git Workflow at Lightning Speed
         </span>
       </h1>
 
       <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-4 max-w-3xl mx-auto">
-        Complete git workflow automation supporting Forgejo, Gitea, and GitHub
+        AI-powered commits, batch PR management, and multi-org workflows. Manage all your repos across GitHub, Gitea, and Forgejo with single commands.
+      </p>
+
+      <p class="text-sm sm:text-base md:text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+        Works seamlessly with Forgejo, Gitea, and GitHub
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -37,6 +49,65 @@ import Footer from '../../components/Footer.astro';
         <a href="https://docs.ucli.tools/getting-started" class="px-6 sm:px-8 py-4 bg-orange-600 hover:bg-orange-700 rounded-lg font-semibold text-base sm:text-lg min-h-[48px] flex items-center justify-center transition text-white">
           Get Started
         </a>
+      </div>
+
+      <!-- Quick Install Terminal -->
+      <div class="max-w-md mx-auto">
+        <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden shadow-xl">
+          <!-- Terminal Header -->
+          <div class="bg-gray-800 px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+              <span class="ml-3 text-gray-400 text-xs font-mono">Quick Install</span>
+            </div>
+            <button
+              id="copy-install-btn"
+              class="p-1.5 hover:bg-white/10 rounded transition flex items-center gap-1.5 text-gray-400 hover:text-white text-xs"
+              title="Copy command"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              Copy
+            </button>
+            <script>
+              document.getElementById('copy-install-btn').addEventListener('click', function() {
+                navigator.clipboard.writeText('ucli build gits');
+              });
+            </script>
+          </div>
+          <!-- Terminal Content -->
+          <div class="px-4 py-3 font-mono text-sm sm:text-base">
+            <span class="text-green-400">$</span>
+            <span class="text-white ml-2">ucli build gits</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Speed Stats Section -->
+  <div class="bg-gray-900 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl sm:text-4xl font-black text-orange-400 mb-2">∞</div>
+          <div class="text-white/70 text-sm sm:text-base">Repos & Orgs at Once</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-black text-red-400 mb-2">1</div>
+          <div class="text-white/70 text-sm sm:text-base">Command to Rule All</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-black text-pink-400 mb-2">3</div>
+          <div class="text-white/70 text-sm sm:text-base">Platforms Supported</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-black text-purple-400 mb-2">0</div>
+          <div class="text-white/70 text-sm sm:text-base">Manual Repetition</div>
+        </div>
       </div>
     </div>
   </div>
@@ -49,6 +120,7 @@ import Footer from '../../components/Footer.astro';
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <!-- Multi-Platform Support -->
       <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
         <div class="w-16 h-16 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
           <svg class="w-8 h-8 text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,9 +128,10 @@ import Footer from '../../components/Footer.astro';
           </svg>
         </div>
         <h3 class="text-2xl font-bold mb-3 text-white">Multi-Platform Support</h3>
-        <p class="text-white/80">Works with Forgejo, Gitea, and GitHub repositories</p>
+        <p class="text-white/80">Works seamlessly with Forgejo, Gitea, and GitHub. One tool for all your repositories, regardless of where they're hosted.</p>
       </div>
 
+      <!-- Batch Operations -->
       <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
         <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
           <svg class="w-8 h-8 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,9 +139,10 @@ import Footer from '../../components/Footer.astro';
           </svg>
         </div>
         <h3 class="text-2xl font-bold mb-3 text-white">Batch Operations</h3>
-        <p class="text-white/80">Handle multiple repositories simultaneously</p>
+        <p class="text-white/80">Push, pull, fetch, and manage status across all orgs and repos in your directory tree with a single command.</p>
       </div>
 
+      <!-- AI-Powered Commits -->
       <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
         <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
           <svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +150,264 @@ import Footer from '../../components/Footer.astro';
           </svg>
         </div>
         <h3 class="text-2xl font-bold mb-3 text-white">AI-Powered Commits</h3>
-        <p class="text-white/80">Smart commit messages and workflow suggestions</p>
+        <p class="text-white/80">Generate meaningful commit messages automatically with AI integration. Just run <code class="bg-white/20 px-2 py-1 rounded text-sm">gits push-all -py</code></p>
+      </div>
+
+      <!-- PR Batch Management (NEW) -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 ring-2 ring-orange-400/50">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center">
+            <svg class="w-8 h-8 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+          </div>
+          <span class="px-3 py-1 bg-orange-500/30 text-orange-200 text-xs font-semibold rounded-full">NEW</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">PR Batch Management</h3>
+        <p class="text-white/80">Create and merge pull requests across all orgs and repos at once. Perfect for multi-org feature rollouts and updates.</p>
+      </div>
+
+      <!-- Smart Diff Detection (NEW) -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Smart Diff Detection</h3>
+        <p class="text-white/80">Only acts on repositories with actual changes. No wasted effort on repos that haven't changed - GitS knows the difference.</p>
+      </div>
+
+      <!-- One-Command Workflows -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+        <div class="w-16 h-16 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Lightning Fast Workflows</h3>
+        <p class="text-white/80">Combine multiple git operations into single commands. What used to take minutes now takes seconds.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workflow Example Section -->
+  <div class="bg-gray-900/50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4 text-white">Complete Workflow in 4 Commands</h2>
+        <p class="text-xl text-white/80">From feature branch to merged PR across your entire organization</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gray-900 rounded-2xl border border-gray-700 overflow-hidden shadow-2xl">
+          <!-- Terminal Header -->
+          <div class="bg-gray-800 px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <span class="ml-4 text-gray-400 text-sm font-mono">~/projects</span>
+            </div>
+            <button
+              id="copy-workflow-btn"
+              class="p-2 hover:bg-white/10 rounded transition flex items-center gap-2 text-gray-400 hover:text-white text-sm"
+              title="Copy all commands"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              Copy
+            </button>
+            <script>
+              document.getElementById('copy-workflow-btn').addEventListener('click', function() {
+                const commands = `gits set-all --suffix -feature
+gits push-all -py
+gits pr create-all --title "Feature X" --suffix -feature
+gits pr merge-all --delete-branch`;
+                navigator.clipboard.writeText(commands);
+              });
+            </script>
+          </div>
+          <!-- Terminal Content -->
+          <div class="p-6 font-mono text-sm sm:text-base">
+            <div class="mb-4">
+              <span class="text-green-400">$</span>
+              <span class="text-white ml-2">gits set-all --suffix -feature</span>
+              <span class="text-gray-500 ml-4"># Create feature branches (auto-detects default)</span>
+            </div>
+            <div class="mb-4">
+              <span class="text-green-400">$</span>
+              <span class="text-white ml-2">gits push-all -py</span>
+              <span class="text-gray-500 ml-4"># AI-powered commits via Pal</span>
+            </div>
+            <div class="mb-4">
+              <span class="text-green-400">$</span>
+              <span class="text-white ml-2">gits pr create-all --title "Feature X" --suffix -feature</span>
+              <span class="text-gray-500 ml-4"># PRs to each repo's default branch</span>
+            </div>
+            <div>
+              <span class="text-green-400">$</span>
+              <span class="text-white ml-2">gits pr merge-all --delete-branch</span>
+              <span class="text-gray-500 ml-4"># Merge all and cleanup</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-center text-white/60 mt-6 text-sm">
+          That's it. Multiple orgs, multiple repos, multiple platforms, one workflow.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Powered By Pal Section -->
+  <div class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 rounded-3xl p-8 sm:p-12 border border-white/10">
+        <div class="flex flex-col lg:flex-row items-center gap-8">
+          <div class="flex-shrink-0">
+            <div class="w-24 h-24 bg-purple-500/30 rounded-2xl flex items-center justify-center">
+              <svg class="w-12 h-12 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+          </div>
+          <div class="flex-grow text-center lg:text-left">
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">Powered by Pal</h3>
+            <p class="text-white/80 text-lg mb-4">
+              GitS integrates with <strong class="text-purple-300">Pal</strong> by Scott Yeager for AI-powered commit message generation.
+              Run <code class="bg-white/20 px-2 py-1 rounded text-sm">gits push-all -py</code> to automatically generate meaningful commit messages using AI.
+            </p>
+            <a href="https://github.com/scottyeager/Pal/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-purple-300 hover:text-purple-200 font-semibold transition">
+              Check out Pal on GitHub
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Use Cases Section -->
+  <div class="bg-gray-900/50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4 text-white">Built for Real Workflows</h2>
+        <p class="text-xl text-white/80">See how teams use GitS to move faster</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Microservices -->
+        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Microservices Architecture</h3>
+          </div>
+          <p class="text-white/70 mb-4">Managing 20+ microservice repos across multiple orgs? Clone them all, update shared dependencies, and create PRs across every service in minutes, not hours.</p>
+          <code class="text-orange-300 text-sm font-mono">gits clone-all myorg && gits pr create-all --title "Bump deps"</code>
+        </div>
+
+        <!-- Monorepo Alternative -->
+        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Multi-Repo Monorepo Feel</h3>
+          </div>
+          <p class="text-white/70 mb-4">Get the benefits of a monorepo without the complexity. Manage related projects together while keeping repositories separate.</p>
+          <code class="text-orange-300 text-sm font-mono">gits status-all && gits push-all -py</code>
+        </div>
+
+        <!-- Open Source Maintainer -->
+        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Open Source Maintenance</h3>
+          </div>
+          <p class="text-white/70 mb-4">Maintain multiple open source projects across GitHub, Gitea, and Forgejo. Fetch all issues, sync changes, and manage releases efficiently.</p>
+          <code class="text-orange-300 text-sm font-mono">gits fetch-issues-all --state open</code>
+        </div>
+
+        <!-- Cross-Platform Teams -->
+        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Cross-Platform Teams</h3>
+          </div>
+          <p class="text-white/70 mb-4">Your team uses GitHub, a client uses Gitea, and your infra is on Forgejo? No problem. GitS speaks all three fluently.</p>
+          <code class="text-orange-300 text-sm font-mono">gits login # Works with any platform</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">Get Started in Seconds</h2>
+      <p class="text-xl text-white/80 mb-8">One command to install. Zero configuration needed.</p>
+
+      <!-- Terminal Install -->
+      <div class="max-w-md mx-auto mb-8">
+        <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden shadow-xl">
+          <div class="bg-gray-800 px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+              <span class="ml-3 text-gray-400 text-xs font-mono">terminal</span>
+            </div>
+            <button
+              id="copy-cta-btn"
+              class="p-1.5 hover:bg-white/10 rounded transition flex items-center gap-1.5 text-gray-400 hover:text-white text-xs"
+              title="Copy command"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              Copy
+            </button>
+            <script>
+              document.getElementById('copy-cta-btn').addEventListener('click', function() {
+                navigator.clipboard.writeText('ucli build gits');
+              });
+            </script>
+          </div>
+          <div class="px-4 py-3 font-mono text-sm sm:text-base">
+            <span class="text-green-400">$</span>
+            <span class="text-white ml-2">ucli build gits</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://docs.ucli.tools/tools/gits" class="px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold text-lg transition text-white">
+          Read the Docs
+        </a>
+        <a href="https://github.com/ucli-tools/gits" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg font-semibold text-lg transition text-white flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+          View on GitHub
+        </a>
       </div>
     </div>
   </div>
