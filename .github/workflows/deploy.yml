@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches: [main, plain]
   workflow_dispatch:
 
 permissions:
@@ -38,6 +40,10 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Check chrome (top bar and footer against ucli-kit/sites.txt)
+        continue-on-error: true   # a chrome check never blocks a deploy
+        run: bash scripts/check-chrome.sh
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -45,6 +51,7 @@ jobs:
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
