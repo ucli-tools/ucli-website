@@ -1,7 +1,7 @@
 /* ucli-kit theme.js: light/dark toggle for the Astro sites (the docs use Material's own toggle).
    Sets data-theme on <html> and remembers the choice in localStorage (inside try/catch).
    The toggle button ([data-theme-toggle], class u-toggle) is rendered `hidden` and revealed here;
-   its label never changes, aria-pressed carries the state. Without JavaScript the page follows
+   its label names the mode a click switches to ("Light mode" while dark, "Dark mode" while light). Without JavaScript the page follows
    prefers-color-scheme alone.
 
    Put this inline in <head>, before the stylesheets, so a stored choice applies before first paint:
@@ -23,7 +23,7 @@
   }
   function sync(buttons) {
     var dark = effective() === 'dark';
-    for (var i = 0; i < buttons.length; i++) buttons[i].setAttribute('aria-pressed', dark ? 'true' : 'false');
+    for (var i = 0; i < buttons.length; i++) buttons[i].textContent = dark ? 'Light mode' : 'Dark mode';
   }
 
   function init() {

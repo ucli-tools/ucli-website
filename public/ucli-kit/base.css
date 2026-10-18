@@ -83,7 +83,6 @@
   padding: 0 var(--u-space-3); min-height: 40px; cursor: pointer;
 }
 .u-menu-btn:hover, .u-toggle:hover { border-color: var(--u-ink); }
-.u-toggle[aria-pressed="true"] { border-color: var(--u-ink); }
 
 .u-nav {
   display: flex; flex-direction: column; order: 3; flex-basis: 100%;
@@ -148,7 +147,7 @@
 @media (min-width: 1024px) {
   .u-masthead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--u-space-5); padding-block: var(--u-space-9) var(--u-space-8); }
   .u-masthead__main { grid-column: 1 / 9; }
-  .u-contents { grid-column: 10 / 13; align-self: end; margin-top: 0; }
+  .u-contents { grid-column: 10 / 13; align-self: start; margin-top: 0; }
 }
 
 /* ---- 5.3 Command slab ---- */
@@ -164,7 +163,7 @@
   font: 400 var(--u-step--1)/var(--u-lh--1) var(--u-font-mono); color: var(--u-slab-mute);
 }
 .u-cmd__body {
-  margin: 0; padding: 0; overflow: visible; background: transparent; color: var(--u-slab-fg);
+  margin: 0; padding: 0; overflow: visible; background: transparent; border: 0; border-radius: 0; color: var(--u-slab-fg);
   font: 400 0.875rem/1.55 var(--u-font-mono); font-synthesis: none;
   white-space: pre-wrap; overflow-wrap: normal; word-break: normal; tab-size: 4;
 }

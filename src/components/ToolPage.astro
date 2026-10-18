@@ -1,0 +1,72 @@
+---
+// A tool page in man-page order (design 7.1a): NAME, SYNOPSIS, DESCRIPTION, OPTIONS, EXAMPLES,
+// SEE ALSO. The default slot is DESCRIPTION; the named slots "options" and "examples" fill those
+// sections, and a section with no content is left out. The h1 goes in the "title" slot.
+import Layout from '../layouts/Layout.astro';
+import Masthead from './Masthead.astro';
+import Section from './Section.astro';
+import Command from './Command.astro';
+import { GET_STARTED_URL } from '../data/commands';
+
+interface Props {
+  title: string;       // <title>
+  name: string;        // command name
+  summary: string;     // the one-line description after "name -"
+  installCmd: string;
+  installLabel?: string;
+  kicker?: string;
+  docsHref: string;
+  github?: string;
+}
+const { title, name, summary, installCmd, installLabel = `Install ${name}`, kicker, docsHref, github } = Astro.props;
+const has = (n: string) => Astro.slots.has(n);
+---
+
+<Layout title={title}>
+  <Masthead interior kicker={kicker}>
+    <slot name="title" />
+  </Masthead>
+
+  <div class="u-wrap">
+    <Section id="name" label="NAME" labelHeading first>
+      <p class="u-lead"><code>{name}</code> - {summary}</p>
+      <slot name="name" />
+    </Section>
+
+    <Section id="synopsis" label="SYNOPSIS" labelHeading>
+      <slot name="synopsis" />
+      <Command label={installLabel} lines={[installCmd]} />
+    </Section>
+
+    {has('default') && (
+      <Section id="description" label="DESCRIPTION" labelHeading><slot /></Section>
+    )}
+
+    {has('options') && (
+      <Section id="options" label="OPTIONS" labelHeading><slot name="options" /></Section>
+    )}
+
+    {has('examples') && (
+      <Section id="examples" label="EXAMPLES" labelHeading><slot name="examples" /></Section>
+    )}
+
+    <Section id="see-also" label="SEE ALSO" labelHeading>
+      <ul class="u-seealso">
+        <li><a class="u-link" href={docsHref}>View Documentation →</a></li>
+        {github && <li><a class="u-link" href={github} target="_blank" rel="noopener noreferrer">View on GitHub →</a></li>}
+        <li><a class="u-link" href={GET_STARTED_URL}>Get Started →</a></li>
+        <li><a class="u-link" href="/tools">Available CLI Tools →</a></li>
+      </ul>
+    </Section>
+  </div>
+</Layout>
+
+<style is:global>
+  .u-seealso { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--u-ink); }
+  .u-seealso li { padding: var(--u-space-2) 0; border-bottom: 1px solid var(--u-rule); }
+  .u-section__body > h3 { margin-top: var(--u-space-6); }
+  .u-section__body > h3:first-child { margin-top: 0; }
+  #name.u-section--first { margin-top: 0; }
+  .u-usecase p { margin: 0; }
+  .u-usecase .u-cmd { margin: var(--u-space-3) 0 0; }
+</style>
