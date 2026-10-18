@@ -4,12 +4,26 @@ import IndexList from '../../components/IndexList.astro';
 import { INSTALL_CMD } from '../../data/commands';
 
 const features = [
-  { name: "One-Command Installs", desc: "Install any tool with a single command. No complex setup or dependencies to worry about." },
-  { name: "Dependency Management", desc: "Automatic dependency resolution and installation. UCLI handles all the complexity for you." },
-  { name: "Version Management", desc: "Keep your tools up-to-date with automatic version management and easy upgrades." },
-  { name: "Cross-Platform", desc: "Works seamlessly on Linux, macOS, and Windows. Same commands, same experience everywhere." },
-  { name: "Lightning Fast", desc: "Optimized for speed with minimal overhead. Get your tools running in seconds." },
-  { name: "Secure & Trusted", desc: "Open source and transparent. All tools are verified and dependencies are managed securely." },
+  { name: "One-Command Builds", desc: "ucli build <tool> clones the tool's repository at the commit the registry pins and runs its make build. ucli installs itself to ~/.local/bin without sudo; a tool installs where its own Makefile says." },
+  { name: "Prerequisites", desc: "ucli prereq installs git, make and the other basics with apt, dnf, pacman or brew. Where a registry entry has a requires: list, ucli checks that each of those programs is installed." },
+  { name: "Versions by Pin", desc: "Each tool is built at a commit pinned in the registry. ucli versions shows them. ucli update, run by hand, updates the tools you have installed; nothing updates by itself." },
+  { name: "Removable", desc: "ucli remove <tool> runs the tool's own delete target. ucli uninstall removes ucli and its state and leaves the tools you installed." },
+  { name: "Linux and macOS", desc: "ucli is a bash script and is not supported natively on Windows. On Windows, run it inside WSL." },
+  { name: "Tested End to End", desc: "A nightly test builds mdtexpdf and docx2md through ucli, and a weekly one builds mdaudiobook." },
+  { name: "Open Source", desc: "ucli and every tool in the registry are open source, each in its own repository." },
+];
+
+const commands = [
+  ['ucli build <tool> ...', 'Build and install one or more tools from the registry'],
+  ['ucli build-all', 'Build every tool listed by ucli list'],
+  ['ucli list', 'List the official tools from the registry'],
+  ['ucli versions [tool]', 'Show version information (--all for every tool)'],
+  ['ucli update', 'Update all installed tools'],
+  ['ucli remove <tool>', "Uninstall a tool with its make delete target"],
+  ['ucli prereq', 'Install prerequisites (apt, dnf, pacman, brew)'],
+  ['ucli install', 'Install ucli to ~/.local/bin, no sudo'],
+  ['ucli uninstall', 'Remove ucli and its state; installed tools stay'],
+  ['ucli --version, ucli --help', 'Print the version, or the command list'],
 ];
 ---
 
@@ -22,7 +36,20 @@ const features = [
 >
   <Fragment slot="title">UCLI<br />Tool Manager</Fragment>
 
+  <p slot="synopsis"><code>ucli</code> <code>&lt;command&gt;</code> <code>[tool ...]</code></p>
+
   <h3>Why UCLI?</h3>
   <p class="u-lead">One tool to rule them all - manage your entire CLI toolkit</p>
   <IndexList rows={features} label="Why UCLI?" />
+
+  <Fragment slot="options">
+    <div class="u-table-wrap" data-scroll-x>
+      <table class="u-table">
+        <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+        <tbody>
+          {commands.map(([c, d]) => <tr><td><code>{c}</code></td><td>{d}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
 </ToolPage>

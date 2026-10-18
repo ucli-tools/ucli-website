@@ -1,0 +1,62 @@
+---
+import ToolPage from '../../components/ToolPage.astro';
+import IndexList from '../../components/IndexList.astro';
+import Command from '../../components/Command.astro';
+
+const features = [
+  { name: "Equations", desc: "Word equations become LaTeX. Equation numbers such as #(1.2.3) become \\tag{1.2.3}." },
+  { name: "Images and Tables", desc: "Pictures are extracted into one image directory and referenced; Word tables become Markdown tables." },
+  { name: "Front Matter", desc: "The dedication, copyright page and title page of the document are kept as their own sections." },
+  { name: "Batch Processing", desc: "Convert every Word document in a directory in one command." },
+  { name: "Verification", desc: "docx2md verify reads the Word file's XML and compares it with the Markdown, and names anything lost or changed." },
+  { name: "Corrections with Proof", desc: "docx2md edit makes one exact correction and copies the rest of the file byte for byte; docx2md diff lists every difference between two Word files." },
+];
+
+const commands = [
+  ['docx2md convert <file.docx> [output.md]', 'Convert one Word document to Markdown with LaTeX'],
+  ['docx2md batch <input-dir> <output-dir>', 'Convert every Word document in a directory'],
+  ['docx2md verify <file.docx> <file.md>', 'Compare the Markdown with the Word document; exit status 1 on a failed check'],
+  ['docx2md edit <in.docx> <out.docx> --replace OLD NEW', 'Make one exact correction in a table cell or a paragraph'],
+  ['docx2md diff <a.docx> <b.docx>', 'List every difference between two Word documents (--expect N, -o report.md)'],
+];
+---
+
+<ToolPage
+  title="docx2md - Word to Markdown Converter | UCLI Tools"
+  name="docx2md"
+  summary="Convert Microsoft Word documents with complex mathematics to Markdown with LaTeX equations"
+  installCmd="ucli build docx2md"
+  docsHref="https://docs.ucli.tools/tools/docx2md"
+  github="https://github.com/ucli-tools/docx2md"
+>
+  <Fragment slot="title">docx2md<br />Word to Markdown</Fragment>
+
+  <p slot="synopsis">It needs Python 3.9 or later and Pandoc, and installs with uv into ~/.local/bin.</p>
+
+  <h3>Why docx2md?</h3>
+  <p class="u-lead">For technical books, academic papers and scientific documents written in Word</p>
+  <IndexList rows={features} label="Why docx2md?" />
+
+  <Fragment slot="options">
+    <div class="u-table-wrap" data-scroll-x>
+      <table class="u-table">
+        <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+        <tbody>
+          {commands.map(([c, d]) => <tr><td><code>{c}</code></td><td>{d}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
+
+  <Fragment slot="examples">
+    <h3>Convert, then verify</h3>
+    <Command small lines={['docx2md convert book.docx book.md', 'docx2md verify book.docx book.md']} />
+    <h3>Convert a directory</h3>
+    <Command small lines={['docx2md batch ./files/input ./files/output']} />
+    <h3>Prove a correction</h3>
+    <Command small lines={[
+      'docx2md edit book.docx book-corrected.docx --replace "teh" "the" --paragraph "the words around teh typo"',
+      'docx2md diff book.docx book-corrected.docx --expect 1 -o change-0001.md',
+    ]} />
+  </Fragment>
+</ToolPage>

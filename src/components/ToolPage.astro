@@ -67,6 +67,11 @@ const has = (n: string) => Astro.slots.has(n);
   .u-section__body > h3 { margin-top: var(--u-space-6); }
   .u-section__body > h3:first-child { margin-top: 0; }
   #name.u-section--first { margin-top: 0; }
+  /* A man page reads as one document: sections follow each other at --u-space-6 (--u-space-7 from 768px), not the 96px of the home page. */
+  .u-wrap > .u-section { margin-top: var(--u-space-6); padding-top: var(--u-space-4); }
+  .u-wrap > .u-section--first { margin-top: 0; }
+  .u-wrap > .u-section .u-section__body > :last-child { margin-bottom: 0; }
+  @media (min-width: 768px) { .u-wrap > .u-section { margin-top: var(--u-space-7); } .u-wrap > .u-section--first { margin-top: 0; } }
   .u-usecase p { margin: 0; }
   .u-usecase .u-cmd { margin: var(--u-space-3) 0 0; }
 </style>

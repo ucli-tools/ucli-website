@@ -1,0 +1,74 @@
+[
+ {
+  "name": "ucli",
+  "desc": "Universal Command Line Interface Tool - Tool manager for the UCLI ecosystem"
+ },
+ {
+  "name": "gits",
+  "desc": "Git workflow automation supporting Forgejo, Gitea, and GitHub"
+ },
+ {
+  "name": "mdtexpdf",
+  "desc": "Convert Markdown documents to PDF with LaTeX quality"
+ },
+ {
+  "name": "mdaudiobook",
+  "desc": "Convert Markdown content to audiobooks and podcasts"
+ },
+ {
+  "name": "convft",
+  "desc": "A lightweight CLI tool that converts between file structures and single text file representations, ideal for backup, sharing, AI work and reconstructing complex directory hierarchies."
+ },
+ {
+  "name": "isobootmaker",
+  "desc": "Create bootable ISO images for various operating systems"
+ },
+ {
+  "name": "mcluster",
+  "desc": "Node Cluster Over Mycelium"
+ },
+ {
+  "name": "mdepub",
+  "desc": "Convert Markdown documents to EPUB format"
+ },
+ {
+  "name": "mdtodocu",
+  "desc": "Generate documentation from Markdown files"
+ },
+ {
+  "name": "monerominer",
+  "desc": "Monero cryptocurrency mining utilities"
+ },
+ {
+  "name": "docx2md",
+  "desc": "Convert Microsoft Office documents to Markdown"
+ },
+ {
+  "name": "quickdocu",
+  "desc": "Quick documentation generation and formatting"
+ },
+ {
+  "name": "tfbootmaker",
+  "desc": "ThreeFold grid boot image creation utilities"
+ },
+ {
+  "name": "tscluster",
+  "desc": "Tailscale VPN Cluster  Resources"
+ },
+ {
+  "name": "ubungpu",
+  "desc": "Ubuntu GPU setup and configuration utilities"
+ },
+ {
+  "name": "ubuntail",
+  "desc": "Ubuntu system administration and automation tools"
+ },
+ {
+  "name": "xrdps",
+  "desc": "XRDP remote desktop server management"
+ },
+ {
+  "name": "zanominer",
+  "desc": "Zano cryptocurrency mining utilities"
+ }
+]

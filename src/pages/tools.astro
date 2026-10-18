@@ -3,13 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import Masthead from '../components/Masthead.astro';
 import Section from '../components/Section.astro';
 import Command from '../components/Command.astro';
+import IndexList from '../components/IndexList.astro';
+import { getTools, PAGES, repoUrl } from '../data/registry';
 
-const tools = [
-  { name: 'ucli', desc: 'Tool manager - Install and manage all CLI tools', cmd: 'ucli build gits' },
-  { name: 'gits', desc: 'Git workflow automation supporting Forgejo, Gitea, and GitHub', cmd: 'gits push-all -py' },
-  { name: 'mdtexpdf', desc: 'Convert Markdown documents to PDF with LaTeX quality', cmd: 'mdtexpdf convert doc.md' },
-  { name: 'mdaudiobook', desc: 'Convert Markdown content to audiobooks and podcasts', cmd: 'mdaudiobook generate book.md' },
-];
+const registry = await getTools();
+const rows = registry.map((t) => ({
+  name: t.name,
+  href: PAGES.includes(t.name) ? `/tools/${t.name}` : repoUrl(t.name),
+  desc: t.desc,
+  code: `ucli build ${t.name}`,
+}));
 ---
 
 <Layout title="UCLI Tools - Available Tools">
@@ -21,17 +24,13 @@ const tools = [
   </Masthead>
 
   <div class="u-wrap">
-    {tools.map((t, i) => (
-      <Section id={t.name} label={t.name} labelHeading first={i === 0}>
-        <a slot="label" class="u-link" href={`/tools/${t.name}`}>{t.name}</a>
-        <p class="u-lead">{t.desc}</p>
-        <Command small lines={[t.cmd]} />
-        <p><a class="u-link" href={`/tools/${t.name}`}>Learn More →</a></p>
-      </Section>
-    ))}
+    <Section id="tools" first>
+      <p class="u-lead">Every tool in the registry. Tools with a page here link to it; the others link to their repository.</p>
+      <IndexList rows={rows} label="Registry tools" />
+    </Section>
 
     <Section id="install-all">
-      <p>All tools are installed with a single command using the ucli tool manager</p>
+      <p>ucli can build several tools in one command</p>
       <Command label="Install multiple tools at once" lines={['ucli build gits mdtexpdf mdaudiobook']} />
     </Section>
   </div>

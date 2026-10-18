@@ -22,10 +22,11 @@ const tools = [
   { name: 'gits', href: '/tools/gits', desc: 'Git Workflow' },
   { name: 'mdtexpdf', href: '/tools/mdtexpdf', desc: 'Markdown to PDF' },
   { name: 'mdaudiobook', href: '/tools/mdaudiobook', desc: 'Markdown to Audio' },
+  { name: 'docx2md', href: '/tools/docx2md', desc: 'Word to Markdown' },
 ];
 
 const features = [
-  { name: 'Cross-Platform', href: 'https://docs.ucli.tools/tools/gits', desc: 'Consistent experience across Linux, macOS, and Windows terminals.', code: 'ucli build [tool]' },
+  { name: 'Cross-Platform', href: 'https://docs.ucli.tools/tools/gits', desc: 'The same commands on Linux and macOS (Windows through WSL).', code: 'ucli build [tool]' },
   { name: 'One-Command Install', href: GET_STARTED_URL, desc: 'Install any tool instantly with dependency management.', code: 'ucli build gits' },
   { name: 'Batch Operations', href: 'https://docs.ucli.tools/tools/gits', desc: 'Handle multiple repositories and files simultaneously.', code: 'gits push-all' },
   { name: 'AI Integration', href: 'https://docs.ucli.tools/tools/gits', desc: 'Smart suggestions and automated workflows powered by AI.', code: 'gits up' },
@@ -45,7 +46,7 @@ const diagram = [
 ].join('\n');
 
 const eco = [
-  { name: 'ucli', status: 'Core', desc: 'Tool manager - Install and manage all CLI tools', points: ['One-command installs', 'Dependency management', 'Cross-platform support'], href: 'https://docs.ucli.tools/tools/ucli', link: 'Learn More →' },
+  { name: 'ucli', status: 'Core', desc: 'Tool manager - Install and manage all CLI tools', points: ['One-command installs', 'Dependency management', 'Linux and macOS'], href: 'https://docs.ucli.tools/tools/ucli', link: 'Learn More →' },
   { name: 'GitS', status: 'Production', desc: 'Git workflow automation for developers', points: ['Multi-platform git ops', 'AI-powered commits', 'Batch operations'], href: 'https://docs.ucli.tools/tools/gits', link: 'Get GitS →' },
   { name: 'Documentation', status: 'Live', desc: 'Complete guides and API references', points: ['Tool documentation', 'Getting started guides', 'Troubleshooting'], href: 'https://docs.ucli.tools', link: 'Browse Docs →' },
 ];
