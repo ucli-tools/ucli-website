@@ -1,0 +1,16 @@
+---
+// The tool list (5.4): name, one line, the command. Rows come as data.
+export interface Row { name: string; href?: string; desc: string; code?: string }
+interface Props { rows: Row[]; label?: string }
+const { rows, label } = Astro.props;
+---
+
+<ul class="u-tools" aria-label={label}>
+  {rows.map((r) => (
+    <li>
+      {r.href ? <a class="u-toolname" href={r.href}>{r.name}</a> : <span class="u-toolname">{r.name}</span>}
+      <p>{r.desc}</p>
+      {r.code && <code>{r.code}</code>}
+    </li>
+  ))}
+</ul>

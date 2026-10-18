@@ -1,6 +1,6 @@
 ---
 import ToolPage from '../../components/ToolPage.astro';
-import IndexList from '../../components/IndexList.astro';
+import Features from '../../components/Features.astro';
 import Command from '../../components/Command.astro';
 
 const features = [
@@ -22,6 +22,7 @@ const commands = [
 ---
 
 <ToolPage
+  tagline="Word to Markdown"
   title="docx2md - Word to Markdown Converter | UCLI Tools"
   name="docx2md"
   summary="Convert Microsoft Word documents with complex mathematics to Markdown with LaTeX equations"
@@ -29,16 +30,14 @@ const commands = [
   docsHref="https://docs.ucli.tools/tools/docx2md"
   github="https://github.com/ucli-tools/docx2md"
 >
-  <Fragment slot="title">docx2md<br />Word to Markdown</Fragment>
-
   <p slot="synopsis">It needs Python 3.9 or later and Pandoc, and installs with uv into ~/.local/bin.</p>
 
-  <h3>Why docx2md?</h3>
-  <p class="u-lead">For technical books, academic papers and scientific documents written in Word</p>
-  <IndexList rows={features} label="Why docx2md?" />
+  <h2>Why docx2md?</h2>
+  <p>For technical books, academic papers and scientific documents written in Word</p>
+  <Features rows={features} label="Why docx2md?" />
 
   <Fragment slot="options">
-    <div class="u-table-wrap" data-scroll-x>
+    <div class="u-tablewrap" data-scroll-x tabindex="0" role="region" aria-label="Commands">
       <table class="u-table">
         <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
         <tbody>
@@ -50,11 +49,11 @@ const commands = [
 
   <Fragment slot="examples">
     <h3>Convert, then verify</h3>
-    <Command small lines={['docx2md convert book.docx book.md', 'docx2md verify book.docx book.md']} />
+    <Command lines={['docx2md convert book.docx book.md', 'docx2md verify book.docx book.md']} />
     <h3>Convert a directory</h3>
-    <Command small lines={['docx2md batch ./files/input ./files/output']} />
+    <Command lines={['docx2md batch ./files/input ./files/output']} />
     <h3>Prove a correction</h3>
-    <Command small lines={[
+    <Command lines={[
       'docx2md edit book.docx book-corrected.docx --replace "teh" "the" --paragraph "the words around teh typo"',
       'docx2md diff book.docx book-corrected.docx --expect 1 -o change-0001.md',
     ]} />

@@ -1,6 +1,6 @@
 ---
 import ToolPage from '../../components/ToolPage.astro';
-import IndexList from '../../components/IndexList.astro';
+import Features from '../../components/Features.astro';
 
 const features = [
   { name: "LaTeX Quality", desc: "Professional typesetting with mathematical formulas, tables, and advanced formatting" },
@@ -10,15 +10,14 @@ const features = [
 ---
 
 <ToolPage
+  tagline="Markdown to PDF"
   title="mdtexpdf - Markdown to PDF Converter | UCLI Tools"
   name="mdtexpdf"
   summary="Convert Markdown documents to professional PDF with LaTeX quality typesetting"
   installCmd={'ucli build mdtexpdf'}
   docsHref="https://docs.ucli.tools/tools/mdtexpdf"
 >
-  <Fragment slot="title">mdtexpdf<br />Markdown to PDF</Fragment>
-
-  <h3>Why mdtexpdf?</h3>
-  <p class="u-lead">Professional PDF generation from your Markdown files</p>
-  <IndexList rows={features} label="Why mdtexpdf?" />
+  <h2>Why mdtexpdf?</h2>
+  <p>Professional PDF generation from your Markdown files</p>
+  <Features rows={features} label="Why mdtexpdf?" />
 </ToolPage>

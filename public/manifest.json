@@ -4,8 +4,8 @@
   "description": "Professional CLI tools for developers - streamline your workflow",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#16181C",
-  "background_color": "#F7F8FA",
+  "theme_color": "#101214",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "/favicon.svg",

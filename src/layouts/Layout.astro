@@ -21,8 +21,8 @@ const { title, description = "Professional CLI tools for developers - streamline
 
     <link rel="icon" type="image/svg+xml" href="/ucli-kit/mark.svg" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F8FA" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111316" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1012" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -35,9 +35,8 @@ const { title, description = "Professional CLI tools for developers - streamline
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/source-serif-4-400.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/source-serif-4-600.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/ibm-plex-mono-400-latin.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/schibsted-grotesk-variable.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/jetbrains-mono-400.woff2" />
     <link rel="stylesheet" href="/ucli-kit/tokens.css" />
     <link rel="stylesheet" href="/ucli-kit/base.css" />
     <link rel="stylesheet" href="/ucli-kit/prose.css" />
@@ -46,10 +45,43 @@ const { title, description = "Professional CLI tools for developers - streamline
   </head>
   <body>
     <a class="u-skip" href="#main">Skip to content</a>
-    <SiteHeader />
+    <SiteHeader site="home" />
     <main id="main">
       <slot />
     </main>
     <SiteFooter />
   </body>
 </html>
+
+<style is:global>
+  /* Page-level pieces this site adds on top of the kit. Kit tokens only. */
+  .u-pl::before { content: "$ "; color: var(--u-ink-2); }
+  .u-cm { color: var(--u-ink-2); }
+  .u-sub { font-size: var(--u-fs-lede); font-weight: 600; margin: 12px 0 0; }
+  .u-page h1 { font-size: var(--u-fs-h1-page); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; max-width: 22ch; }
+  .u-page h1.u-mono { font-family: var(--u-font-mono); font-weight: 500; letter-spacing: -.02em; }
+  .u-page .u-aside { margin: 0 0 8px; color: var(--u-ink-2); }
+  .u-page .u-install { margin-top: 28px; }
+  .u-page .u-section h2 { margin: 0 0 16px; }
+  .u-page .u-section h2.u-sh3 { font-size: 20px; margin-top: 32px; }
+  .u-page .u-section > h2.u-sh3:first-child { margin-top: 0; }
+  .u-page p { max-width: 68ch; }
+  .u-page h3 { font-size: 18px; margin: 28px 0 8px; }
+  .u-page .u-split h3 { margin-top: 12px; }
+  .u-page .u-lede { max-width: 36em; }
+  .u-page .u-install p { max-width: none; }
+  .u-feat { list-style: none; margin: 0 0 8px; padding: 0; border-top: 1px solid var(--u-rule); }
+  .u-feat li { padding: 14px 0; border-bottom: 1px solid var(--u-rule); }
+  .u-feat p { margin: 4px 0 0; color: var(--u-ink-2); }
+  .u-feat b { font-weight: 600; }
+  .u-feat a { font-weight: 600; }
+  .u-feat code { color: var(--u-ink); }
+  .u-page .u-code { margin: 12px 0 20px; max-width: 44rem; }
+  .u-page .u-tablewrap { overflow-x: auto; }
+  .u-page .u-table code { white-space: normal; }
+  .u-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+  .u-split ul { margin: 0 0 12px; padding-left: 20px; }
+  .u-split li { margin: 4px 0; }
+  @media (max-width: 720px) { .u-split { grid-template-columns: minmax(0, 1fr); } }
+  .u-page .u-next + .u-section { margin-top: 40px; }
+</style>

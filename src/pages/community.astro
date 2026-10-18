@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Masthead from '../components/Masthead.astro';
-import IndexList from '../components/IndexList.astro';
+import Features from '../components/Features.astro';
 
 const rows = [
   { name: 'GitHub', href: 'https://github.com/ucli-tools', desc: 'View source code, report issues, and contribute' },
@@ -11,15 +10,12 @@ const rows = [
 ---
 
 <Layout title="Community - UCLI Tools">
-  <Masthead interior lead="Connect with developers building the future of CLI tools">
-    <Fragment>Join Our<br />Community</Fragment>
-    <Fragment slot="actions">
-      <a class="u-btn" href="https://github.com/ucli-tools">GitHub</a>
-      <a class="u-link" href="https://github.com/ucli-tools/community/discussions">Discussions →</a>
-    </Fragment>
-  </Masthead>
-
-  <div class="u-wrap">
-    <IndexList label="Community links" rows={rows} />
-  </div>
+  <div class="u-wrap"><div class="u-page u-ipage">
+    <h1>Join Our Community</h1>
+    <p class="u-lede">Connect with developers building the future of CLI tools</p>
+    <p class="u-next"><a href="https://github.com/ucli-tools">GitHub</a><a href="https://github.com/ucli-tools/community/discussions">Discussions</a></p>
+    <section class="u-section">
+      <Features label="Community links" rows={rows} />
+    </section>
+  </div></div>
 </Layout>

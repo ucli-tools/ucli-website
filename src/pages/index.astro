@@ -1,243 +1,61 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Masthead from '../components/Masthead.astro';
-import Section from '../components/Section.astro';
 import Command from '../components/Command.astro';
-import IndexList from '../components/IndexList.astro';
-import { INSTALL_CMD, INSTALL_URL, GET_STARTED_URL } from '../data/commands';
+import ToolList from '../components/ToolList.astro';
+import Steps from '../components/Steps.astro';
+import { INSTALL_CMD } from '../data/commands';
+import { getTools, PAGES, repoUrl } from '../data/registry';
 
-const contents = [
-  ['how-it-works', 'How UCLI Works'],
-  ['tools', 'Available Tools'],
-  ['integration', 'Install Tools with One Command!'],
-  ['gits', 'GitS - Git Workflow Automation'],
-  ['developers', 'Built for Developers'],
-  ['steps', 'From Zero to Productivity in 3 Steps'],
-  ['ecosystem', 'UCLI Tools Ecosystem'],
-  ['start', 'Ready to Boost Your Productivity?'],
-];
+const registry = await getTools();
+const start = ['mdtexpdf', 'mdaudiobook', 'docx2md', 'gits'];
+const rows = start.flatMap((n) => {
+  const t = registry.find((r) => r.name === n);
+  return t ? [{ name: t.name, href: PAGES.includes(t.name) ? `/tools/${t.name}` : repoUrl(t.name), desc: t.desc, code: `ucli build ${t.name}` }] : [];
+});
 
-const tools = [
-  { name: 'ucli', href: '/tools/ucli', desc: 'Tool Manager' },
-  { name: 'gits', href: '/tools/gits', desc: 'Git Workflow' },
-  { name: 'mdtexpdf', href: '/tools/mdtexpdf', desc: 'Markdown to PDF' },
-  { name: 'mdaudiobook', href: '/tools/mdaudiobook', desc: 'Markdown to Audio' },
-  { name: 'docx2md', href: '/tools/docx2md', desc: 'Word to Markdown' },
-];
-
-const features = [
-  { name: 'Cross-Platform', href: 'https://docs.ucli.tools/tools/gits', desc: 'The same commands on Linux and macOS (Windows through WSL).', code: 'ucli build [tool]' },
-  { name: 'One-Command Install', href: GET_STARTED_URL, desc: 'Install any tool instantly with dependency management.', code: 'ucli build gits' },
-  { name: 'Batch Operations', href: 'https://docs.ucli.tools/tools/gits', desc: 'Handle multiple repositories and files simultaneously.', code: 'gits push-all' },
-  { name: 'AI Integration', href: 'https://docs.ucli.tools/tools/gits', desc: 'Smart suggestions and automated workflows powered by AI.', code: 'gits up' },
-];
-
-const diagram = [
-  'Your Terminal (Local)',
-  '        ↓ GitS',
-  '┌─────────────────────────────┐',
-  '│ Multi-Platform Git Ops      │',
-  '│                             │',
-  '│ Forgejo + Gitea + GitHub    │',
-  '│ Batch Operations            │',
-  '│ AI-Powered Commits          │',
-  '│ No More Manual Git Work     │',
-  '└─────────────────────────────┘',
-].join('\n');
-
-const eco = [
-  { name: 'ucli', status: 'Core', desc: 'Tool manager - Install and manage all CLI tools', points: ['One-command installs', 'Dependency management', 'Linux and macOS'], href: 'https://docs.ucli.tools/tools/ucli', link: 'Learn More →' },
-  { name: 'GitS', status: 'Production', desc: 'Git workflow automation for developers', points: ['Multi-platform git ops', 'AI-powered commits', 'Batch operations'], href: 'https://docs.ucli.tools/tools/gits', link: 'Get GitS →' },
-  { name: 'Documentation', status: 'Live', desc: 'Complete guides and API references', points: ['Tool documentation', 'Getting started guides', 'Troubleshooting'], href: 'https://docs.ucli.tools', link: 'Browse Docs →' },
+const steps = [
+  { head: 'A tool gets a new commit on main.', body: 'If it has tests, they run first.' },
+  { head: "The registry opens a pull request that moves the tool's pin to that commit.", body: 'A tool with tests gets there only after its tests pass.' },
+  { head: 'A maintainer merges it.', body: 'The new pin is official.' },
+  { head: 'You run <code>ucli update</code>.', body: 'Your machine builds that exact commit.' },
 ];
 ---
 
 <Layout title="UCLI Tools - Professional CLI Tools for Developers">
-  <Masthead kicker="Professional CLI Tools" lead="Professional command-line tools that save you time and boost productivity">
-    <Fragment>Streamline Your<br />Development Workflow</Fragment>
-    <ul class="u-meta" slot="meta">
-      <li>Open source</li>
-      <li>Cross-platform</li>
-      <li>Developer-focused</li>
-    </ul>
-    <Fragment slot="command">
-      <Command label="Install ucli" lines={[INSTALL_CMD]} />
-      <p class="u-quiet"><a class="u-link" href={INSTALL_URL}>Read the script</a></p>
-    </Fragment>
-    <Fragment slot="actions">
-      <a class="u-btn" href={GET_STARTED_URL}>Get Started Free</a>
-      <a class="u-link" href="https://docs.ucli.tools">View Documentation →</a>
-    </Fragment>
-    <nav class="u-contents" slot="contents" aria-label="Contents">
-      <p class="u-contents__title">Contents</p>
-      <ol>
-        {contents.map(([id, title], i) => (
-          <li><span>{i + 1}</span><a href={`#${id}`}>{title}</a></li>
-        ))}
-      </ol>
-    </nav>
-  </Masthead>
-
   <div class="u-wrap">
-    <Section id="how-it-works" label="1" title="How UCLI Works" first>
-      <p class="u-lead"><strong>ucli</strong> is your tool manager that lets you install and manage all UCLI tools with one command</p>
-      <Command label="Step 1: Install UCLI" lines={[{ t: '# Install the UCLI tool manager', c: true }, INSTALL_CMD]} />
-      <Command label="Step 2: Install Any Tool" lines={[
-        { t: '# Install any UCLI tool', c: true },
-        'ucli build gits',
-        { t: '# Or install multiple tools', c: true },
-        'ucli build mdtexpdf mdaudiobook',
-      ]} />
-    </Section>
-
-    <Section id="tools" label="2" title="Available Tools">
-      <IndexList label="Available Tools" rows={tools} />
-      <p><a class="u-link" href="/tools">View All Tools →</a></p>
-    </Section>
-
-    <Section id="integration" label="3" title="Install Tools with One Command!">
-      <p><strong>UCLI integration</strong> - Install, update, and manage all your CLI tools</p>
-      <ul class="u-meta">
-        <li>One-command install</li>
-        <li>Version management</li>
-        <li>Cross-platform</li>
-        <li>Dependency management</li>
-      </ul>
-    </Section>
-
-    <Section id="gits" label="4" title="GitS - Git Workflow Automation">
-      <p class="u-kicker">Our Flagship Tool</p>
-      <p>Complete git workflow automation supporting Forgejo, Gitea, and GitHub. From clone to deploy in one command.</p>
-
-      <h3>How It Works</h3>
-      <figure class="diagram"><pre aria-label="Diagram: your terminal runs GitS, which handles multi-platform git operations: Forgejo, Gitea and GitHub, batch operations, AI-powered commits, and no more manual git work.">{diagram}</pre></figure>
-      <Command small lines={['ucli build gits']} />
-      <p>Professional git workflow in seconds</p>
-
-      <div class="pair">
-        <div>
-          <h3>The Problem</h3>
-          <ul>
-            <li>Manual git operations are repetitive and error-prone</li>
-            <li>Multi-repo workflows require complex scripting</li>
-            <li>Different platforms need different commands</li>
-          </ul>
-        </div>
-        <div>
-          <h3>The Solution</h3>
-          <ul>
-            <li><strong>Unified interface:</strong> Same commands for all platforms</li>
-            <li><strong>Batch operations:</strong> Handle multiple repos simultaneously</li>
-            <li><strong>AI integration:</strong> Smart commit messages and suggestions</li>
-            <li><strong>Cross-platform:</strong> Works on Linux, macOS, and Windows</li>
-          </ul>
-        </div>
+    <div class="u-hero">
+      <div>
+        <h1 style="font-size:var(--u-fs-h1-home);font-weight:700;letter-spacing:-.03em;line-height:1.04;max-width:17ch">Every tool built at one exact commit.</h1>
+        <p class="u-lede">ucli is a small bash CLI that installs and updates a family of command-line tools. Each tool is built at the exact commit the registry pins. Pins move by pull request, after checks on the new commit.</p>
+        <Command bar label="Install" cmd={INSTALL_CMD}>
+          <p class="u-install__note">A new install goes into <code>~/.local/bin</code> and never asks for sudo. Linux and macOS; on Windows, use WSL.</p>
+        </Command>
+        <p class="u-next"><a href="/tools">Browse the tools</a><a href="https://docs.ucli.tools">Read the docs</a></p>
       </div>
+      <figure class="u-term">
+        <figcaption>What an update looks like</figcaption>
+        <div class="u-code"><div class="u-code__x" data-scroll-x tabindex="0" role="region" aria-label="Example of ucli update"><pre><span class="u-o-prompt">$ </span>ucli update
+[UPDATE] Fetching repository list...
+[UPDATE] gits is up to date (bad4390f).
+[UPDATE] Rebuilding 1 tool(s): mdtexpdf
+[UPDATE] Update completed!</pre></div></div>
+        <p class="u-term__n">Some lines are left out.</p>
+      </figure>
+    </div>
 
-      <ul class="u-figures">
-        <li class="u-figure"><span class="u-figure__num">3</span><span class="u-figure__cap">Platforms</span></li>
-        <li class="u-figure"><span class="u-figure__num">10+</span><span class="u-figure__cap">Commands</span></li>
-      </ul>
-      <p class="links"><a class="u-link" href="/tools/gits">Learn More</a><a class="u-link" href="https://docs.ucli.tools/tools/gits">Documentation</a></p>
-    </Section>
+    <section class="u-section" id="tools">
+      <h2>Start with these tools</h2>
+      <ToolList rows={rows} label="Start with these tools" />
+      <p class="u-more"><a href="https://registry.ucli.tools/">See all {registry.length} official tools in the registry</a></p>
+    </section>
 
-    <Section id="developers" label="5" title="Built for Developers">
-      <p>Powerful features for professional CLI workflows</p>
-      <IndexList label="Features" rows={features} />
-    </Section>
-
-    <Section id="steps" label="6" title="From Zero to Productivity in 3 Steps">
-      <p>Total time: 2 minutes. Seriously.</p>
-      <ol class="u-steps">
-        <li>
-          <h3>Install UCLI</h3>
-          <Command small lines={[INSTALL_CMD]} />
-          <ul>
-            <li>One-line installer</li>
-            <li>Cross-platform setup</li>
-            <li>Dependency management</li>
-          </ul>
-          <p class="u-steps__time">30 seconds</p>
-        </li>
-        <li>
-          <h3>Install Tools</h3>
-          <Command small lines={['ucli build gits', 'ucli build mdtexpdf']} />
-          <ul>
-            <li>Professional CLI tools</li>
-            <li>Automatic dependencies</li>
-            <li>Ready to use immediately</li>
-          </ul>
-          <p class="u-steps__time">1 minute</p>
-        </li>
-        <li>
-          <h3>Boost Productivity</h3>
-          <Command small lines={['gits pull && gits push', 'mdtexpdf convert doc.md']} />
-          <ul>
-            <li>Streamlined workflows</li>
-            <li>Professional results</li>
-            <li>Cross-platform consistency</li>
-          </ul>
-          <p class="u-steps__time">Instant</p>
-        </li>
-      </ol>
-      <p><strong>Total: 2 minutes from zero to professional CLI productivity</strong></p>
-      <p>Use the <strong>ucli</strong> tool manager directly, or explore our <strong>comprehensive documentation</strong> for advanced usage.</p>
-    </Section>
-
-    <Section id="ecosystem" label="7" title="UCLI Tools Ecosystem">
-      <p>Integrated tools for your development journey</p>
-      <ul class="eco">
-        {eco.map((e) => (
-          <li>
-            <div class="eco__head">
-              <h3>{e.name}</h3>
-              <span class="u-status u-status--ok">{e.status}</span>
-            </div>
-            <div class="eco__body">
-              <p>{e.desc}</p>
-              <ul>
-                {e.points.map((p) => <li>{p}</li>)}
-              </ul>
-              <p><a class="u-link" href={e.href} target="_blank" rel="noopener noreferrer">{e.link}</a></p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </Section>
-
-    <Section id="start" label="8" title="Ready to Boost Your Productivity?">
-      <p>Install professional CLI tools and streamline your development workflow</p>
-      <div class="u-masthead__actions">
-        <a class="u-btn" href={GET_STARTED_URL}>Get Started →</a>
-        <a class="u-link" href="https://github.com/ucli-tools">View on GitHub</a>
-      </div>
-    </Section>
+    <section class="u-section" id="updates">
+      <h2>How updates reach you</h2>
+      <Steps items={steps} />
+    </section>
   </div>
 </Layout>
 
 <style>
-  .diagram { margin: var(--u-space-5) 0; max-width: 44rem; }
-  .diagram pre {
-    margin: 0; padding: var(--u-space-4); overflow-x: auto;
-    background: var(--u-paper-2); color: var(--u-ink); border: 1px solid var(--u-rule); border-radius: 0;
-    font: 400 0.875rem/1.5 var(--u-font-mono); white-space: pre;
-  }
-  .pair { margin-top: var(--u-space-6); }
-  .pair h3 { margin-top: var(--u-space-5); }
-  @media (min-width: 768px) {
-    .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--u-space-6); }
-  }
-  .u-steps ul { margin-bottom: var(--u-space-3); }
-  .links { display: flex; flex-wrap: wrap; gap: var(--u-space-3) var(--u-space-5); }
-  .eco { margin: var(--u-space-5) 0 0; padding: 0; list-style: none; max-width: none; border-top: 1px solid var(--u-ink); }
-  .eco > li { margin: 0; padding: var(--u-space-4) 0 var(--u-space-5); border-bottom: 1px solid var(--u-rule); }
-  .eco h3 { margin: 0; font-family: var(--u-font-mono); font-weight: 500; font-size: var(--u-step-1); letter-spacing: 0; }
-  .eco__head { display: flex; align-items: baseline; gap: var(--u-space-4); margin-bottom: var(--u-space-2); }
-  .eco__body ul { margin-bottom: var(--u-space-3); }
-  .eco__body p:last-child { margin-bottom: 0; }
-  @media (min-width: 768px) {
-    .eco > li { display: grid; grid-template-columns: 14rem minmax(0, 1fr); column-gap: var(--u-space-5); }
-    .eco__head { display: block; margin: 0; }
-    .eco__head h3 { margin-bottom: var(--u-space-2); }
-  }
+  .u-term__n { margin: 8px 0 0; font-size: var(--u-fs-small); color: var(--u-ink-2); }
 </style>
