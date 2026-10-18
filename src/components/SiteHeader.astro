@@ -1,0 +1,46 @@
+---
+import { GET_STARTED_URL } from '../data/commands';
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const links = [
+  { href: '/', label: 'Home' },
+  { href: 'https://docs.ucli.tools', label: 'Documentation' },
+  { href: '/tools', label: 'Tools' },
+  { href: 'https://github.com/ucli-tools', label: 'GitHub' },
+  { href: GET_STARTED_URL, label: 'Get Started' },
+];
+---
+
+<header class="u-header" id="site-header">
+  <div class="u-wrap u-header__inner">
+    <div class="u-header__brand">
+      <a class="u-wordmark" href="/" aria-label="ucli">ucli</a>
+    </div>
+    <nav class="u-nav" id="site-nav" aria-label="Main">
+      {links.map((l) => (
+        <a href={l.href} aria-current={l.href === path ? 'page' : undefined}>{l.label}</a>
+      ))}
+    </nav>
+    <div class="u-header__tools">
+      <button class="u-menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu</button>
+      <button class="u-toggle" type="button" data-theme-toggle hidden>Dark mode</button>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var header = document.getElementById('site-header');
+    var btn = header.querySelector('.u-menu-btn');
+    btn.hidden = false;
+    header.setAttribute('data-menu', 'closed');
+    function set(open) {
+      header.setAttribute('data-menu', open ? 'open' : 'closed');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function () { set(header.getAttribute('data-menu') !== 'open'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.getAttribute('data-menu') === 'open') { set(false); btn.focus(); }
+    });
+  })();
+</script>

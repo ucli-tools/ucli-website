@@ -1,4 +1,8 @@
 ---
+import '../styles/tw.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -13,13 +17,13 @@ const { title, description = "Professional CLI tools for developers - streamline
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>try{var t=localStorage.getItem('ucli-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/ucli-kit/mark.svg" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#f59e0b" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F8FA" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111316" />
 
-    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -30,20 +34,22 @@ const { title, description = "Professional CLI tools for developers - streamline
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/source-serif-4-400.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/source-serif-4-600.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/ucli-kit/fonts/ibm-plex-mono-400-latin.woff2" />
+    <link rel="stylesheet" href="/ucli-kit/tokens.css" />
+    <link rel="stylesheet" href="/ucli-kit/base.css" />
+    <link rel="stylesheet" href="/ucli-kit/prose.css" />
+    <script src="/ucli-kit/copy.js" defer></script>
+    <script src="/ucli-kit/theme.js" defer></script>
   </head>
-  <body class="antialiased bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 text-white min-h-screen">
-    <slot />
+  <body>
+    <a class="u-skip" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
   </body>
 </html>
-
-<style is:global>
-  @import '../styles/global.css';
-
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-    scroll-behavior: smooth;
-  }
-</style>

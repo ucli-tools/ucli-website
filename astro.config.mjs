@@ -6,5 +6,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://ucli.tools',
   output: 'static',
-  integrations: [tailwind()]
+  integrations: [tailwind({ applyBaseStyles: false })]
 });
