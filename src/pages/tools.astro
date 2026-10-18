@@ -1,9 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Masthead from '../components/Masthead.astro';
-import Section from '../components/Section.astro';
 import Command from '../components/Command.astro';
-import IndexList from '../components/IndexList.astro';
+import ToolList from '../components/ToolList.astro';
 import { getTools, PAGES, repoUrl } from '../data/registry';
 
 const registry = await getTools();
@@ -16,22 +14,19 @@ const rows = registry.map((t) => ({
 ---
 
 <Layout title="UCLI Tools - Available Tools">
-  <Masthead interior lead="Professional command-line tools for developers">
-    <Fragment>Available<br />CLI Tools</Fragment>
-    <Fragment slot="actions">
-      <a class="u-link" href="https://docs.ucli.tools">View Documentation →</a>
-    </Fragment>
-  </Masthead>
+  <div class="u-wrap"><div class="u-page u-ipage">
+    <h1>Available CLI Tools</h1>
+    <p class="u-lede">Professional command-line tools for developers</p>
+    <p class="u-next"><a href="https://docs.ucli.tools">View documentation</a></p>
 
-  <div class="u-wrap">
-    <Section id="tools" first>
-      <p class="u-lead">Every tool in the registry. Tools with a page here link to it; the others link to their repository.</p>
-      <IndexList rows={rows} label="Registry tools" />
-    </Section>
+    <section class="u-section" id="tools">
+      <p>Every tool in the registry. Tools with a page here link to it; the others link to their repository.</p>
+      <ToolList rows={rows} label="Registry tools" />
+    </section>
 
-    <Section id="install-all">
+    <section class="u-section" id="install-all">
       <p>ucli can build several tools in one command</p>
       <Command label="Install multiple tools at once" lines={['ucli build gits mdtexpdf mdaudiobook']} />
-    </Section>
-  </div>
+    </section>
+  </div></div>
 </Layout>

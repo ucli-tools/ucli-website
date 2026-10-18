@@ -1,0 +1,9 @@
+---
+// Numbered steps (5.5). Each step is a bold sentence and an optional second sentence.
+interface Props { items: { head: string; body?: string }[] }
+const { items } = Astro.props;
+---
+
+<ol class="u-steps">
+  {items.map((s) => <li><b set:html={s.head} />{s.body && <span set:html={s.body} />}</li>)}
+</ol>
