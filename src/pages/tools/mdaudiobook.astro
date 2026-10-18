@@ -1,6 +1,6 @@
 ---
 import ToolPage from '../../components/ToolPage.astro';
-import IndexList from '../../components/IndexList.astro';
+import Features from '../../components/Features.astro';
 
 const features = [
   { name: "Natural Speech", desc: "Narration by a neural voice that runs on your own computer, sentence by sentence" },
@@ -10,15 +10,14 @@ const features = [
 ---
 
 <ToolPage
+  tagline="Markdown to Audiobook"
   title="mdaudiobook - Markdown to Audiobook Converter | UCLI Tools"
   name="mdaudiobook"
   summary="Transform your Markdown content into engaging audiobooks and podcasts"
   installCmd={'ucli build mdaudiobook'}
   docsHref="https://docs.ucli.tools/tools/mdaudiobook"
 >
-  <Fragment slot="title">mdaudiobook<br />Markdown to Audiobook</Fragment>
-
-  <h3>Why mdaudiobook?</h3>
-  <p class="u-lead">Turn your written content into captivating audio experiences</p>
-  <IndexList rows={features} label="Why mdaudiobook?" />
+  <h2>Why mdaudiobook?</h2>
+  <p>Turn your written content into captivating audio experiences</p>
+  <Features rows={features} label="Why mdaudiobook?" />
 </ToolPage>

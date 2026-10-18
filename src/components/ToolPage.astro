@@ -1,77 +1,50 @@
 ---
-// A tool page in man-page order (design 7.1a): NAME, SYNOPSIS, DESCRIPTION, OPTIONS, EXAMPLES,
-// SEE ALSO. The default slot is DESCRIPTION; the named slots "options" and "examples" fill those
-// sections, and a section with no content is left out. The h1 goes in the "title" slot.
+// A tool page: a plain page (design 7.1). h1 with the tool name, a lede, the install bar, then the
+// sections as h2 with hairline rules, and "Read the docs" and "View on GitHub" as text links.
+// Slots: "synopsis" (under the install bar), "name" (a line under the lede), default (the body),
+// "options" and "examples" (a section with no content is left out).
 import Layout from '../layouts/Layout.astro';
-import Masthead from './Masthead.astro';
-import Section from './Section.astro';
 import Command from './Command.astro';
-import { GET_STARTED_URL } from '../data/commands';
+import { repoUrl } from '../data/registry';
 
 interface Props {
   title: string;       // <title>
   name: string;        // command name
-  summary: string;     // the one-line description after "name -"
+  tagline: string;     // the second line of the old heading
+  summary: string;     // one-line description
   installCmd: string;
   installLabel?: string;
   kicker?: string;
   docsHref: string;
   github?: string;
 }
-const { title, name, summary, installCmd, installLabel = `Install ${name}`, kicker, docsHref, github } = Astro.props;
+const { title, name, tagline, summary, installCmd, installLabel = `Install ${name}`, kicker, docsHref, github = repoUrl(name) } = Astro.props;
 const has = (n: string) => Astro.slots.has(n);
 ---
 
 <Layout title={title}>
-  <Masthead interior kicker={kicker}>
-    <slot name="title" />
-  </Masthead>
+  <div class="u-wrap"><div class="u-page u-ipage">
+    {kicker && <p class="u-aside">{kicker}</p>}
+    <h1 class="u-mono">{name}</h1>
+    <p class="u-sub">{tagline}</p>
+    <p class="u-lede">{summary}</p>
+    {has('name') && <slot name="name" />}
+    <Command bar label={installLabel} cmd={installCmd} />
+    {has('synopsis') && <div class="u-synopsis"><slot name="synopsis" /></div>}
 
-  <div class="u-wrap">
-    <Section id="name" label="NAME" labelHeading first>
-      <p class="u-lead"><code>{name}</code> - {summary}</p>
-      <slot name="name" />
-    </Section>
+    {has('default') && <section class="u-section"><slot /></section>}
+    {has('options') && <section class="u-section" id="options"><h2>Options</h2><slot name="options" /></section>}
+    {has('examples') && <section class="u-section" id="examples"><h2>Examples</h2><slot name="examples" /></section>}
 
-    <Section id="synopsis" label="SYNOPSIS" labelHeading>
-      <slot name="synopsis" />
-      <Command label={installLabel} lines={[installCmd]} />
-    </Section>
-
-    {has('default') && (
-      <Section id="description" label="DESCRIPTION" labelHeading><slot /></Section>
-    )}
-
-    {has('options') && (
-      <Section id="options" label="OPTIONS" labelHeading><slot name="options" /></Section>
-    )}
-
-    {has('examples') && (
-      <Section id="examples" label="EXAMPLES" labelHeading><slot name="examples" /></Section>
-    )}
-
-    <Section id="see-also" label="SEE ALSO" labelHeading>
-      <ul class="u-seealso">
-        <li><a class="u-link" href={docsHref}>View Documentation →</a></li>
-        {github && <li><a class="u-link" href={github} target="_blank" rel="noopener noreferrer">View on GitHub →</a></li>}
-        <li><a class="u-link" href={GET_STARTED_URL}>Get Started →</a></li>
-        <li><a class="u-link" href="/tools">Available CLI Tools →</a></li>
-      </ul>
-    </Section>
-  </div>
+    <p class="u-next">
+      <a href={docsHref}>Read the docs</a>
+      <a href={github} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </p>
+  </div></div>
 </Layout>
 
 <style is:global>
-  .u-seealso { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--u-ink); }
-  .u-seealso li { padding: var(--u-space-2) 0; border-bottom: 1px solid var(--u-rule); }
-  .u-section__body > h3 { margin-top: var(--u-space-6); }
-  .u-section__body > h3:first-child { margin-top: 0; }
-  #name.u-section--first { margin-top: 0; }
-  /* A man page reads as one document: sections follow each other at --u-space-6 (--u-space-7 from 768px), not the 96px of the home page. */
-  .u-wrap > .u-section { margin-top: var(--u-space-6); padding-top: var(--u-space-4); }
-  .u-wrap > .u-section--first { margin-top: 0; }
-  .u-wrap > .u-section .u-section__body > :last-child { margin-bottom: 0; }
-  @media (min-width: 768px) { .u-wrap > .u-section { margin-top: var(--u-space-7); } .u-wrap > .u-section--first { margin-top: 0; } }
-  .u-usecase p { margin: 0; }
-  .u-usecase .u-cmd { margin: var(--u-space-3) 0 0; }
+  .u-synopsis { margin-top: 20px; }
+  .u-synopsis p { margin: 0; color: var(--u-ink-2); }
+  .u-page .u-next { margin-top: 48px; }
 </style>

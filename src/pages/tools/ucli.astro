@@ -1,6 +1,6 @@
 ---
 import ToolPage from '../../components/ToolPage.astro';
-import IndexList from '../../components/IndexList.astro';
+import Features from '../../components/Features.astro';
 import { INSTALL_CMD } from '../../data/commands';
 
 const features = [
@@ -28,22 +28,21 @@ const commands = [
 ---
 
 <ToolPage
+  tagline="Tool Manager"
   title="UCLI - Universal CLI Tool Manager | UCLI Tools"
   name="ucli"
   summary="The universal command-line interface for managing and installing all your development tools"
   installCmd={INSTALL_CMD}
   docsHref="https://docs.ucli.tools/tools/ucli"
 >
-  <Fragment slot="title">UCLI<br />Tool Manager</Fragment>
-
   <p slot="synopsis"><code>ucli</code> <code>&lt;command&gt;</code> <code>[tool ...]</code></p>
 
-  <h3>Why UCLI?</h3>
-  <p class="u-lead">One tool to rule them all - manage your entire CLI toolkit</p>
-  <IndexList rows={features} label="Why UCLI?" />
+  <h2>Why UCLI?</h2>
+  <p>One tool to rule them all - manage your entire CLI toolkit</p>
+  <Features rows={features} label="Why UCLI?" />
 
   <Fragment slot="options">
-    <div class="u-table-wrap" data-scroll-x>
+    <div class="u-tablewrap" data-scroll-x tabindex="0" role="region" aria-label="Commands">
       <table class="u-table">
         <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
         <tbody>

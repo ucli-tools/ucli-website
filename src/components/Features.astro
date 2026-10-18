@@ -1,0 +1,15 @@
+---
+// Ruled list of named points on the tool pages: bold name, a sentence, an optional command.
+export interface Row { name: string; href?: string; desc: string; code?: string }
+interface Props { rows: Row[]; label?: string }
+const { rows, label } = Astro.props;
+---
+
+<ul class="u-feat" aria-label={label}>
+  {rows.map((r) => (
+    <li>
+      <b>{r.href ? <a href={r.href}>{r.name}</a> : r.name}</b>
+      <p>{r.desc}{r.code && <>{' '}<code>{r.code}</code></>}</p>
+    </li>
+  ))}
+</ul>

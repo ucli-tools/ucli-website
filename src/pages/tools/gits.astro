@@ -1,14 +1,20 @@
 ---
 import ToolPage from '../../components/ToolPage.astro';
-import IndexList from '../../components/IndexList.astro';
+import Features from '../../components/Features.astro';
 import Command from '../../components/Command.astro';
 
-const figures = [
-  ['∞', 'Repos & Orgs at Once'],
-  ['1', 'Command to Rule All'],
-  ['3', 'Platforms Supported'],
-  ['0', 'Manual Repetition'],
-];
+const diagram = [
+  'Your Terminal (Local)',
+  '        ↓ GitS',
+  '┌─────────────────────────────┐',
+  '│ Multi-Platform Git Ops      │',
+  '│                             │',
+  '│ Forgejo + Gitea + GitHub    │',
+  '│ Batch Operations            │',
+  '│ AI-Powered Commits          │',
+  '│ No More Manual Git Work     │',
+  '└─────────────────────────────┘',
+].join('\n');
 
 const features = [
   { name: 'Multi-Platform Support', desc: "Works seamlessly with Forgejo, Gitea, and GitHub. One tool for all your repositories, regardless of where they're hosted." },
@@ -39,6 +45,7 @@ const usecases = [
 ---
 
 <ToolPage
+  tagline="Git Workflow at Lightning Speed"
   title="GitS - Git Workflow Automation | UCLI Tools"
   name="gits"
   summary="AI-powered commits, batch PR management, and multi-org workflows. Manage all your repos across GitHub, Gitea, and Forgejo with single commands."
@@ -48,44 +55,58 @@ const usecases = [
   docsHref="https://docs.ucli.tools/tools/gits"
   github="https://github.com/ucli-tools/gits"
 >
-  <Fragment slot="title">GitS<br />Git Workflow at Lightning Speed</Fragment>
-
   <p slot="name">Works seamlessly with Forgejo, Gitea, and GitHub</p>
 
   <p slot="synopsis">One command to install. Zero configuration needed.</p>
 
-  <ul class="u-figures">
-    {figures.map(([n, c]) => <li class="u-figure"><span class="u-figure__num">{n}</span><span class="u-figure__cap">{c}</span></li>)}
-  </ul>
+  <h2>Why GitS?</h2>
+  <p>Streamline your git workflow with professional automation</p>
+  <Features rows={features} label="Why GitS?" />
 
-  <h3>Why GitS?</h3>
-  <p class="u-lead">Streamline your git workflow with professional automation</p>
-  <IndexList rows={features} label="Why GitS?" />
+  <h2>How it works</h2>
+  <div class="u-code"><div class="u-code__x" data-scroll-x tabindex="0" role="region" aria-label="Diagram: your terminal runs GitS, which handles multi-platform git operations: Forgejo, Gitea and GitHub, batch operations, AI-powered commits, and no more manual git work."><pre>{diagram}</pre></div></div>
+  <p>Professional git workflow in seconds</p>
+  <div class="u-split">
+    <div>
+      <h3>The Problem</h3>
+      <ul>
+        <li>Manual git operations are repetitive and error-prone</li>
+        <li>Multi-repo workflows require complex scripting</li>
+        <li>Different platforms need different commands</li>
+      </ul>
+    </div>
+    <div>
+      <h3>The Solution</h3>
+      <ul>
+        <li><strong>Unified interface:</strong> Same commands for all platforms</li>
+        <li><strong>Batch operations:</strong> Handle multiple repos simultaneously</li>
+        <li><strong>AI integration:</strong> Smart commit messages and suggestions</li>
+        <li><strong>Cross-platform:</strong> Works on Linux and macOS; on Windows, use WSL</li>
+      </ul>
+    </div>
+  </div>
 
-  <h3>Powered by Pal</h3>
+  <h2>Powered by Pal</h2>
   <p>
     GitS integrates with <strong>Pal</strong> by Scott Yeager for AI-powered commit message generation.
     Run <code>gits push-all -py</code> to automatically generate meaningful commit messages using AI.
   </p>
-  <p><a class="u-link" href="https://github.com/scottyeager/Pal/" target="_blank" rel="noopener noreferrer">Check out Pal on GitHub →</a></p>
+  <p><a href="https://github.com/scottyeager/Pal/" target="_blank" rel="noopener noreferrer">Check out Pal on GitHub →</a></p>
 
   <Fragment slot="examples">
     <h3>Complete Workflow in 4 Commands</h3>
-    <p class="u-lead">From feature branch to merged PR across your entire organization</p>
+    <p>From feature branch to merged PR across your entire organization</p>
     <Command label="~/projects" lines={workflow} />
     <p>That's it. Multiple orgs, multiple repos, multiple platforms, one workflow.</p>
 
     <h3>Built for Real Workflows</h3>
-    <p class="u-lead">See how teams use GitS to move faster</p>
-    <ul class="u-index">
+    <p>See how teams use GitS to move faster</p>
+    <ul class="u-feat">
       {usecases.map((u) => (
-        <li class="u-index__row u-usecase">
-          <span class="u-index__name">{u.name}</span>
-          <span class="u-index__lead" aria-hidden="true"></span>
-          <div class="u-index__desc">
-            <p>{u.desc}</p>
-            <Command small lines={u.lines} />
-          </div>
+        <li>
+          <b>{u.name}</b>
+          <p>{u.desc}</p>
+          <Command lines={u.lines} label={u.name} />
         </li>
       ))}
     </ul>
