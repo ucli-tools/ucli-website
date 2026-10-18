@@ -1,0 +1,19 @@
+---
+// Ruled index: name ........ description (design 5.6). Rows are passed as data; `code` is an
+// optional inline command shown after the description.
+export interface Row { name: string; href?: string; desc: string; code?: string }
+interface Props { rows: Row[]; label?: string }
+const { rows, label } = Astro.props;
+---
+
+<ul class="u-index" aria-label={label}>
+  {rows.map((r) => (
+    <li class="u-index__row">
+      {r.href
+        ? <a class="u-index__name u-toolname" href={r.href}>{r.name}</a>
+        : <span class="u-index__name">{r.name}</span>}
+      <span class="u-index__lead" aria-hidden="true"></span>
+      <span class="u-index__desc">{r.desc}{r.code && <>{' '}<code>{r.code}</code></>}</span>
+    </li>
+  ))}
+</ul>

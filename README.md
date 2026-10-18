@@ -95,7 +95,7 @@ To use the automated script:
 
 ## 📄 Site Sections
 
-✅ **Hero** - Yellow/orange gradient with CLI-focused messaging  
+✅ **Masthead** - Left-aligned, on paper, with the install command in the dark slab and a contents list  
 ✅ **Tool Manager Banner** - UCLI one-command install highlighting  
 ✅ **Flagship Tool (GitS)** - Problem/Solution format with ASCII diagrams  
 ✅ **Developer Experience** - 4 key CLI features (cross-platform, batch ops, AI, one-command)  

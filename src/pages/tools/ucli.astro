@@ -1,20 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
 ---
 
 <Layout title="UCLI - Universal CLI Tool Manager | UCLI Tools">
-  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 text-white">
+  <!-- Masthead -->
   <div class="relative overflow-hidden">
     <!-- Background gradient -->
     <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400"></div>
     <!-- CSS Grid Pattern -->
     <div class="absolute inset-0 opacity-30" style="background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 50px 50px; mask-image: linear-gradient(180deg, white, rgba(255,255,255,0));"></div>
 
-    <Navbar />
-
-    <!-- Hero Content -->
+    <!-- Masthead content -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 text-center">
       <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight mb-4 md:mb-6">
         <span class="text-white">
@@ -111,6 +108,5 @@ import Footer from '../../components/Footer.astro';
       </div>
     </div>
   </div>
-
-  <Footer />
+  </div>
 </Layout>

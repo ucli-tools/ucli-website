@@ -1,0 +1,23 @@
+---
+// A ruled section with the margin column (design 5.6, 7.1). `label` is the margin text: a plain
+// numeral on the home page, nothing elsewhere. `labelHeading` makes the label an h2 (tool names).
+interface Props {
+  id?: string;
+  label?: string | number;
+  title?: string;
+  first?: boolean;
+  wide?: boolean;
+  labelHeading?: boolean;
+}
+const { id, label, title, first = false, wide = false, labelHeading = false } = Astro.props;
+---
+
+<section class:list={['u-section', { 'u-section--first': first, 'u-section--wide': wide }]} id={id}>
+  {label !== undefined && (labelHeading
+    ? <h2 class="u-section__label u-section__label--man"><slot name="label">{label}</slot></h2>
+    : <p class="u-section__label" aria-hidden="true">{label}</p>)}
+  <div class="u-section__body">
+    {title && <h2 class="u-section__title">{title}</h2>}
+    <slot />
+  </div>
+</section>
