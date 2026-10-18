@@ -15,22 +15,30 @@ ucli-website; the other ucli repos hold verbatim copies. Change it here first, t
 
 ## Fonts
 
-Self-hosted, Latin subset (the Latin ranges of the Google Fonts/fontsource subset), WOFF2. The
-licence of each family ships next to the files: `fonts/OFL-Source-Serif.txt`, `fonts/OFL-IBM-Plex.txt`
-(SIL Open Font License 1.1). The upstream files were not edited beyond subsetting.
+Self-hosted WOFF2, SIL Open Font License 1.1. The licence texts ship next to the files:
+`fonts/OFL-Source-Serif.txt`, `fonts/OFL-IBM-Plex.txt`. Both licences reserve a font name ("Source",
+"Plex"), so a subset or any edited file may not carry that name. **Every font file here is an
+unmodified, byte-identical copy of an official upstream WOFF2 file** (copied, not subset, not
+renamed), which is why the families keep their original names. The Plex files are the official Latin
+split (`Latin1`) with the upstream `unicode-range` (in `tokens.css`).
 
-| Files | Family | Upstream release | Source file | Licence text from |
-|---|---|---|---|---|
-| `source-serif-4-400`, `-400-italic`, `-600` | Source Serif 4 (Regular, Italic, Semibold; text cut) | 4.005R, https://github.com/adobe-fonts/source-serif/releases/tag/4.005R (`source-serif-4.005_WOFF2.zip`, `TTF/`) | `SourceSerif4-Regular/It/Semibold.ttf.woff2` | https://github.com/adobe-fonts/source-serif/blob/4.005R/LICENSE.md |
-| `ibm-plex-sans-400`, `-600` | IBM Plex Sans (Regular, SemiBold) | @ibm/plex-sans@1.1.0, https://github.com/IBM/plex/releases/tag/%40ibm%2Fplex-sans%401.1.0 (`ibm-plex-sans.zip`) | `fonts/complete/woff2/IBMPlexSans-Regular/SemiBold.woff2` | `LICENSE.txt` in that zip |
-| `ibm-plex-mono-400`, `-500` | IBM Plex Mono (Regular, Medium) | @ibm/plex-mono@2.5.0, https://github.com/IBM/plex/releases/tag/%40ibm%2Fplex-mono%402.5.0 (`ibm-plex-mono.zip`) | `fonts/complete/woff2/IBMPlexMono-Regular/Medium.woff2` | `LICENSE.txt` in that zip (identical to Plex Sans) |
+| File | Family / cut | Upstream source | Version | Status | sha256 |
+|---|---|---|---|---|---|
+| `source-serif-4-400.woff2` | Source Serif 4 Regular | `TTF/SourceSerif4-Regular.ttf.woff2` in `source-serif-4.005_WOFF2.zip`, https://github.com/adobe-fonts/source-serif/releases/download/4.005R/source-serif-4.005_WOFF2.zip | 4.005R | unmodified | `6b053e98f0838afe81f3e784727be4583a7c13bb42f198dc5202ecffee0aaee0` |
+| `source-serif-4-400-italic.woff2` | Source Serif 4 Italic | `TTF/SourceSerif4-It.ttf.woff2`, same zip | 4.005R | unmodified | `ca3b17ed1e3e668ffd9e03385cfd46e1b095df783de53710d25d41241496026b` |
+| `source-serif-4-600.woff2` | Source Serif 4 Semibold | `TTF/SourceSerif4-Semibold.ttf.woff2`, same zip | 4.005R | unmodified | `457a13ac92e977d82e376038a2daac7fdb5433610910bf5787bdf6c1c3781865` |
+| `ibm-plex-sans-400-latin.woff2` | IBM Plex Sans Regular, Latin1 | `fonts/split/woff2/IBMPlexSans-Regular-Latin1.woff2` in https://registry.npmjs.org/@ibm/plex-sans/-/plex-sans-1.1.0.tgz | @ibm/plex-sans 1.1.0 | unmodified | `b5ad7bd39f996144915f0ad9849a90183b27d8c28ad97ed98af5b1bebc51f6b1` |
+| `ibm-plex-sans-600-latin.woff2` | IBM Plex Sans SemiBold, Latin1 | `fonts/split/woff2/IBMPlexSans-SemiBold-Latin1.woff2`, same package | @ibm/plex-sans 1.1.0 | unmodified | `fff0ab3a88b0b4aa0b693e4f0201359a15183b08e3fa5696d1918d8f0ade8ad5` |
+| `ibm-plex-mono-400-latin.woff2` | IBM Plex Mono Regular, Latin1 | `fonts/split/woff2/IBMPlexMono-Regular-Latin1.woff2` in https://registry.npmjs.org/@ibm/plex-mono/-/plex-mono-2.5.0.tgz | @ibm/plex-mono 2.5.0 | unmodified | `e8993d946649b9d01abb1ed06d574b19d8ea3e66b5c3948602db335c44c18e56` |
+| `ibm-plex-mono-500-latin.woff2` | IBM Plex Mono Medium, Latin1 | `fonts/split/woff2/IBMPlexMono-Medium-Latin1.woff2`, same package | @ibm/plex-mono 2.5.0 | unmodified | `41201b658a328b9d00368215c2f1102770f80b15952ab82631e4006255e6365d` |
 
-Subset command (fontTools 4.46):
-`python3 -m fontTools.subset <upstream.woff2> --unicodes=U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD --flavor=woff2 --layout-features='*' --no-hinting --desubroutinize --output-file=<out.woff2>`
+Source Serif is the full upstream file (all scripts); characters the Plex Latin1 file lacks fall back
+to the next font in the stack. The OFL texts come from the same releases
+(https://github.com/adobe-fonts/source-serif/blob/4.005R/LICENSE.md and `LICENSE.txt` in the Plex packages).
 
 ## Fallback metrics
 
-Measured from the files in `fonts/` with fontTools (average advance of a-z, hhea ascent and descent
+Measured from the files in `fonts/` (unchanged by the switch to the upstream files: same glyph metrics) with fontTools (average advance of a-z, hhea ascent and descent
 over unitsPerEm) against the Liberation faces that stand in for Times New Roman, Arial and Courier New.
 
 | Face | Average a-z (font / fallback) | size-adjust | ascent / descent override |

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Checks the ucli-kit copy in this repo.
-#  1. Blocking: SHA256SUMS matches the files in this repo's own kit folder.
+#  1. Fails this script (the deploy workflow step is continue-on-error, so it never blocks a deploy): SHA256SUMS matches the files in this repo's own kit folder.
 #  2. Warning only (non-canonical repos): VERSION and SHA256SUMS against the canonical kit in
 #     ucli-website on main. A difference or a network failure prints a ::warning:: and exits 0.
 # To change the kit: change it in ucli-website first, then copy it to the other repos.
